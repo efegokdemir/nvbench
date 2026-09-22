@@ -687,12 +687,20 @@ def main():
         action="store_true",
         help="Use dark theme (black background, white text)",
     )
-    parser.add_argument(
+    color_group = parser.add_mutually_exclusive_group()
+    color_group.add_argument(
+        "--color",
+        dest="no_color",
+        action="store_false",
+        help="Use ANSI color codes for status output",
+    )
+    color_group.add_argument(
         "--no-color",
         dest="no_color",
         action="store_true",
-        help="Use emoji instead of ANSI color codes (useful for GitHub issues/PRs)",
+        help="Use emoji instead of ANSI color codes (default; useful for GitHub issues/PRs)",
     )
+    parser.set_defaults(no_color=True)
     parser.add_argument(
         "-a",
         "--axis",
