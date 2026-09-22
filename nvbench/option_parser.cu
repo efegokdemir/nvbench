@@ -90,9 +90,9 @@ enum class stream_printer_spec
 
 [[nodiscard]] bool wildcard_match(std::string_view pattern, std::string_view value)
 {
-  std::size_t pattern_pos = 0;
-  std::size_t value_pos = 0;
-  std::size_t wildcard_pos = std::string_view::npos;
+  std::size_t pattern_pos        = 0;
+  std::size_t value_pos          = 0;
+  std::size_t wildcard_pos       = std::string_view::npos;
   std::size_t wildcard_value_pos = 0;
 
   while (value_pos < value.size())
@@ -105,13 +105,13 @@ enum class stream_printer_spec
     }
     else if (pattern_pos < pattern.size() && pattern[pattern_pos] == '*')
     {
-      wildcard_pos = pattern_pos++;
+      wildcard_pos       = pattern_pos++;
       wildcard_value_pos = value_pos;
     }
     else if (wildcard_pos != std::string_view::npos)
     {
       pattern_pos = wildcard_pos + 1;
-      value_pos = ++wildcard_value_pos;
+      value_pos   = ++wildcard_value_pos;
     }
     else
     {
@@ -998,10 +998,9 @@ try
   }
 
   const auto &benchmarks = mgr.get_benchmarks();
-  const auto exact =
-    std::find_if(benchmarks.cbegin(), benchmarks.cend(), [&name](const auto &bench) {
-      return bench->get_name() == name;
-    });
+  const auto exact = std::find_if(benchmarks.cbegin(),
+                                  benchmarks.cend(),
+                                  [&name](const auto &bench) { return bench->get_name() == name; });
   if (exact != benchmarks.cend())
   {
     add_clone(**exact);
