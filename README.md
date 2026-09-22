@@ -34,7 +34,7 @@ of the challenges inherent to CUDA kernel benchmarking and how NVBench solves th
 
 # Supported Compilers and Tools
 
-- CMake > 3.30.4
+- CMake >= 4.0
 - CUDA Toolkit + nvcc: 12.0 and above
 - g++: 7 -> 14
 - clang++: 14 -> 19
