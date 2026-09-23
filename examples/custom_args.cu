@@ -42,7 +42,7 @@ void parse_custom_args(std::vector<std::string> &args)
     throw std::invalid_argument("--iterations requires a positive integer");
   }
 
-  int iterations = 0;
+  int iterations    = 0;
   const auto result = std::from_chars(value->data(), value->data() + value->size(), iterations);
   if (result.ec != std::errc{} || result.ptr != value->data() + value->size() || iterations <= 0)
   {
